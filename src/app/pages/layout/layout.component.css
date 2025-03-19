@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    background-color: #007bff;
+    justify-content: center;
+}
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .pages li a:hover {
+    background-color: navy;
+  }
+  .logout{
+    background-color: navy;
+    cursor: pointer;
+  }
+  .logout li a:hover {
+    background-color: navy;
+  }

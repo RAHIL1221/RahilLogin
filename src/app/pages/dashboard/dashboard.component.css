@@ -1,0 +1,156 @@
+
+.container{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+table {
+    width: 75%;
+    border-collapse: collapse;
+    margin:auto;
+}
+.header{
+    background-color: lightBlue;
+}
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 300px;
+  }
+  
+  .image-upload input,
+  .image-upload textarea {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .image-upload img {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 10px;
+  }
+  
+  .image-upload button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .image-upload button:hover {
+    background-color: #45a049;
+  }
+  .button{
+    background-color: red;
+  }
+#addProductButton{
+    width:145px;
+    height:30px;
+    margin: 40px;
+    color:white;
+    background-color:#007bff ;
+    font-weight: 700;
+    cursor: pointer;
+}
+img:hover{
+    background-color: lightblue;
+    transform: scale(1.05);
+  }
+#submitButton{
+    width:145px;
+    height:30px;
+    color:white;
+    background-color:#007bff ;
+    font-weight: 700;
+}
+#deleteButton{
+    width:100px;
+    height:30px;
+    color:white;
+    background-color:red ;
+    font-weight: 700;
+    cursor: pointer;
+}
+#updateButton{
+    width:100px;
+    height:30px;
+    color:white;
+    background-color:#007bff ;
+    font-weight: 700;
+    cursor: pointer;
+}
+textarea{
+    width:170px;
+}
+h1{
+    margin:auto;
+    width: 50%;
+    padding: 10px;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #f4f4f4;
+}
+h1{
+align-items: center;
+}
+small{
+    font-weight: 900;
+    background-color: yellow;
+    padding: 5px;
+}
+.form-input{
+    display: grid;
+    padding-top: 5px;
+}
+.content{
+    display: flex;
+    width:100%;
+
+}
+
+.addProduct{
+    background-color: lightBlue;
+    width: 200px;
+    margin: 20px;
+
+}
+.form-input{
+    padding: 15px;
+}
+.sideBar{
+    width:20%;
+    background-color: skyblue;
+    height: 130vh;
+}
+
+.update{
+    background-color: black;
+}
+.updateForm{
+    background-color: lightBlue;
+    width: 200px;
+    margin: 20px;
+
+}
+.close-button{
+    background-color: red;
+   
+    color: white;
+    font-weight: 900;
+    float: inline-end;
+   
+}
+
+.productList{
+width:90%;
+margin:auto;
+padding: 10px;
+}

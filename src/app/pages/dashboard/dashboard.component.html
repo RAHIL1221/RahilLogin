@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="header">
+    <h1 *ngIf="username; else noUsername">
+      Welcome <span>{{ username }}</span> to your Dashboard
+    </h1>
+    <small>{{dob}}</small>
+
+    <ng-template #noUsername>
+      <h1>Please log in to see your username.</h1>
+    </ng-template>
+  </div>
+
+  <div class="content">
+
+
+    <!-- Add Product Form -->
+    <div class="sideBar">
+      @if(!accessForm){
+          <!-- Button to add a product -->
+    <button id="addProductButton" (click)="accessForm=true;">Add Product</button>
+            }
+            @else{
+    <!-- Button to update a product -->
+   
+      <div class="form">
+        <div class="addProduct" *ngIf="accessForm">
+          <button class="close-button" (click)="accessForm=false">X</button>
+          <form action="" id="productForm" (ngSubmit)="addProduct()">
+            <div class="form-input">
+              <div *ngIf="imagePreview">
+                <img [src]="imagePreview" alt="Image preview" width="100px" height="100px"/>
+              </div>
+              <label for="productImage">Product Image</label>
+              <input type="file" (change)="onFileSelected($event)" />
+            </div>
+            <div class="form-input">
+              <label for="productName">Product Name</label>
+              <input type="text" name="productName" id="productName" [(ngModel)]="newProduct.title">
+            </div>
+            <div class="form-input">
+              <label for="productPrice">Product Price</label>
+              <input type="text" name="productPrice" id="productPrice" class="desc" [(ngModel)]="newProduct.price">
+            </div>
+            <div class="form-input">
+              <label for="productDesc">Product Description</label>
+              <textarea rows="4" name="productDesc" form="productForm" [(ngModel)]="newProduct.description">Enter text here...</textarea>
+            </div>
+            <div class="form-input">
+              <input id="submitButton" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+
+      <!-- Update Product Form -->
+      <div class="updateForm" *ngIf="accessUForm">
+        <form action="" id="productForm" (ngSubmit)="updateProduct()">
+          <button class="close-button" (click)="accessUForm=false">X</button>
+          <div class="form-input">
+            <label for="productName">Product Name</label>
+            <input type="text" name="productName" id="productName" [(ngModel)]="selectedProduct.title">
+          </div>
+          <div class="form-input">
+            <label for="productPrice">Product Price</label>
+            <input type="text" name="productPrice" id="productPrice" class="desc" [(ngModel)]="selectedProduct.price">
+          </div>
+          <div class="form-input">
+            <label for="productDesc">Product Description</label>
+            <textarea rows="4" name="productDesc" form="productForm" [(ngModel)]="selectedProduct.description">Enter text here...</textarea>
+          </div>
+          <div class="form-input">
+            <input id="submitButton" type="submit" value="Update">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Products List -->
+    
+    <div class="productList">
+      <h2 style="text-align:center;">Products List</h2>
+      @if(products.length>0){
+      <table>
+        <thead>
+          <tr>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let product of products; let i = index">
+          <tr>
+          <td><a [routerLink]="['/product', product.id]"><img [src]="product.images" alt="{{ product.title }}" height="100" width="100"></a></td>
+            <td>{{ product.title }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.description }}</td>
+            <td> <button  (click)="accessUForm=true;editProduct(product.id)" id="updateButton">Update</button></td>
+            <td><button (click)="deleteProduct(product.id)" id="deleteButton">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    }
+    @else{
+      <h2>No Product Found...!!</h2>
+    }
+    </div>
+  </div>
+</div>

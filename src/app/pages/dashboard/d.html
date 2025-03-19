@@ -1,0 +1,152 @@
+<div>
+    <h2>Product List</h2>
+  
+    <!-- Add Product Form -->
+    <div>
+      <h3>Add Product</h3>
+      <input [(ngModel)]="newProduct.title" placeholder="Title">
+      <input [(ngModel)]="newProduct.description" placeholder="Description">
+      <input [(ngModel)]="newProduct.price" type="number" placeholder="Price">
+      <button (click)="addProduct()">Add Product</button>
+    </div>
+  
+    <ul>
+      <li *ngFor="let product of products">
+        <h4>{{ product.title }} - ${{ product.price }}</h4>
+        <p>{{ product.description }}</p>
+        <button (click)="editProduct(product.id)">Edit</button>
+        <button (click)="deleteProduct(product.id)">Delete</button>
+      </li>
+    </ul>
+  
+    <!-- Edit Product Form -->
+    <div *ngIf="selectedProduct">
+      <h3>Edit Product</h3>
+      <input [(ngModel)]="selectedProduct.title" placeholder="Title">
+      <input [(ngModel)]="selectedProduct.description" placeholder="Description">
+      <input [(ngModel)]="selectedProduct.price" type="number" placeholder="Price">
+      <button (click)="updateProduct()">Update Product</button>
+    </div>
+  </div>
+
+
+
+  import { Injectable } from '@angular/core';
+  import { Observable, of, throwError } from 'rxjs';
+  
+  // Define the Product interface for better type safety
+  export interface Product {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    images: string[];
+  }
+  
+  @Injectable({
+    providedIn: 'root',
+  })
+  export class ProductService {
+    private products: Product[] = [
+      {
+        id: 1,
+        title: 'Essence Mascara Lash Princess',
+        description:
+          'The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.',
+        price: 9.99,
+        images: [
+          'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png',
+        ],
+      },
+      {
+        id: 2,
+        title: 'Eyeshadow Palette with Mirror',
+        description:
+          'The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it\'s convenient for on-the-go makeup application.',
+        price: 19.99,
+        images: [
+          'https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png',
+        ],
+      },
+      {
+        id: 3,
+        title: 'Powder Canister',
+        description:
+          'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.',
+        price: 14.99,
+        images: [
+          'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png',
+        ]
+      }
+    ];
+  
+    constructor() {}
+  
+  
+    // Get a product by ID
+    getProduct(id: number): Observable<Product | null> {
+      const product = this.products.find((p) => p.id === id);
+      if (product) {
+        return of(product);
+      } else {
+        return throwError(() => new Error('Product not found'));
+      }
+    }
+  
+  }
+  
+
+  import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+
+// Define the Product interface for better type safety
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  images: string[];
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductService {
+  private products: Product[] = [
+    {
+      id: 1,
+      title: 'Essence Mascara Lash Princess',
+      description:
+        'The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.',
+      price: 9.99,
+      images: [
+        'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png',
+      ],
+    },
+    {
+      id: 2,
+      title: 'Eyeshadow Palette with Mirror',
+      description:
+        'The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it\'s convenient for on-the-go makeup application.',
+      price: 19.99,
+      images: [
+        'https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png',
+      ],
+    },
+    {
+      id: 3,
+      title: 'Powder Canister',
+      description:
+        'The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.',
+      price: 14.99,
+      images: [
+        'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png',
+      ],
+    },
+  ];
+
+  constructor() {}
+
+  // Get a product by ID
+ 
+}

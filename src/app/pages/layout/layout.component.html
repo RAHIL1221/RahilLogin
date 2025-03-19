@@ -1,0 +1,15 @@
+<div class="nav">
+<ul>
+    <div class="page1">
+        <li><a (click)="homePage()">Home</a></li>
+    </div>
+
+<div class="page2">
+        <li><a (click)="contactPage()" routerLink="contact">Contact</a></li>
+    </div>
+    <div class="logout">
+        <li><a (click)="onLogout()">Logout</a></li>
+    </div>
+  </ul>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,34 @@
+    <div class="container">
+        <!-- Login Form (only shown when isLoginView is false) -->
+        <h2>Login</h2>
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+          <div class="form-input">
+            <label for="username">Username</label>
+            <input [(ngModel)]="loginObj.username" type="text" id="username" name="username" required #username="ngModel" />
+            <div *ngIf="username.touched && username.invalid">
+              <small *ngIf="username.errors?.['required']">Username is required.</small>
+            </div>
+          </div>
+      
+          <div class="form-input">
+            <label for="password">Password</label>
+            <div class="passflex">
+            <input class="password" [(ngModel)]="loginObj.password" type="{{pass}}" id="password" name="password" required #password="ngModel" />
+            <input type="button" class="seePass" (click)="seePass()"value="show">
+            </div>
+            <div *ngIf="password.touched && password.invalid">
+              <small *ngIf="password.errors?.['required']">Password is required.</small>
+            </div>
+          </div>
+      
+          <div class="form-input">
+          <button type="submit" [disabled]="loginForm.invalid"><strong>Login</strong></button>
+          </div>
+      
+          <p>Don't have an account? <a class="toggleButton" (click)="registerRoute()">Register here</a></p>
+        </form>
+    </div>
+  
+
+
+  

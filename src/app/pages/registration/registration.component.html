@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Registration</h2>
+  <form (ngSubmit)="onRegister()" #registrationForm="ngForm">
+  
+    <div class="form-input">
+      <label for="username">Set Username</label>
+      <input [(ngModel)]="userRegObj.username" type="text" id="username" name="username" required #username="ngModel" />
+      <div *ngIf="username.touched && username.invalid">
+        <small *ngIf="username.errors?.['required']">Username is required.</small>
+      </div>
+    </div>
+
+    <div class="form-input">
+      <label for="email">E-mail</label>
+      <input [(ngModel)]="userRegObj.email" type="email" id="email" name="email" required email #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched">
+        <small *ngIf="email.errors?.['required']">Email is required.</small>
+        <small *ngIf="email.errors?.['email']">Please enter a valid email address.</small>
+      </div>
+    </div>
+
+    <div class="form-input">
+      <label for="password">Password</label>
+      <input [(ngModel)]="userRegObj.password" type="password" id="password" name="password" required #password="ngModel" minlength="4"/>
+      <div *ngIf="password.touched && password.invalid">
+        <small *ngIf="password.errors?.['required']">Password is required.</small>
+        <small *ngIf="password.errors?.['minlength']">Password must be  4 characters.</small>
+      </div>
+    </div>
+
+    <!-- New Datepicker Field -->
+    <div class="form-input">
+      <label for="dob">Date of Birth</label>
+      <input [(ngModel)]="userRegObj.dob" type="date" id="dob" name="dob" required #dob="ngModel"/>
+      <div *ngIf="dob.touched && dob.invalid">
+        <small *ngIf="dob.errors?.['required']">Date of Birth is required.</small>
+      </div>
+    </div>
+
+    <div class="form-input">
+      <button type="submit" [disabled]="registrationForm.invalid"><strong>Register</strong></button>
+    </div>
+
+    <div class="form-input">
+      <p>Already have an account? <a class="toggleButton" (click)="loginRoute()">Login here</a></p>
+    </div>
+  </form>
+</div>
